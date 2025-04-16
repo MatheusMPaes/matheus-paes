@@ -1,5 +1,3 @@
-#@title Criando uma função que cria uma tabela com todos os pokemons.
-
 import requests
 import pandas as pd
 
