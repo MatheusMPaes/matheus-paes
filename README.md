@@ -4,7 +4,6 @@ import requests
 import pandas as pd
 
 Pokemon_Lista = []
-#-------------------------------------------------------------------------------
 
 for N_Pokemon in range(1,152):
 
@@ -13,14 +12,11 @@ for N_Pokemon in range(1,152):
   response = requests.get(url)
   data = response.json()
 
-#-------------------------------------------------------------------------------
-
   url = f"https://pokeapi.co/api/v2/pokemon/{data['name']}/"
 
   response = requests.get(url)
   data = response.json()
 
-#-------------------------------------------------------------------------------
   Pokemon_Lista.append({
   "N° Pokedex" : data["game_indices"][4]["game_index"],
   "Pokemon" : data['name'],
@@ -30,8 +26,6 @@ for N_Pokemon in range(1,152):
   "Habilidade" : data["abilities"][0]["ability"]["name"]
   })
 
-#-------------------------------------------------------------------------------
 
 df = pd.DataFrame(Pokemon_Lista)
-# df.head(11)
 df.sort_values(by='Peso', ascending=False).head(10)
